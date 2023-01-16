@@ -7,7 +7,13 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      colors: {
+        lake: '#64E1FB',
+        ocean: '#50B2F5',
+        leaves: '#8EEABB'
+      }
+    },
   },
   plugins: [],
 }

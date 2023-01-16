@@ -17,12 +17,12 @@ function Register() {
                     <img src={Logo} className='h-20' />
                     <h1 className='text-white uppercase font-bold text-4xl'>NRChat</h1>
                 </div>
-                <input type="text" placeholder='Username' name='username' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-[#4e0eff] rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-[#997af0] focus:outline-none' />
-                <input type="email" placeholder='Email' name='email' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-[#4e0eff] rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-[#997af0] focus:outline-none' />
-                <input type="password" placeholder='Password' name='password' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-[#4e0eff] rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-[#997af0] focus:outline-none' />
-                <input type="password" placeholder='Confirm your password' name='confirmPassword' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-[#4e0eff] rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-[#997af0] focus:outline-none' />
-                <button type='submit' className='bg-[#997af0] text-white py-4 px-8 border-none font-bold cursor-pointer rounded-[0.4rem] text-base uppercase transition hover:bg-[#4e0eff]'>Create user</button>
-                <span className='text-white'>Already have an account? <Link to="/login" className='text-[#4e0eff] no-underline font-bold '>Login</Link></span>
+                <input type="text" placeholder='Username' name='username' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-lake rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-leaves focus:outline-none' />
+                <input type="email" placeholder='Email' name='email' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-lake rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-leaves focus:outline-none' />
+                <input type="password" placeholder='Password' name='password' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-lake rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-leaves focus:outline-none' />
+                <input type="password" placeholder='Confirm your password' name='confirmPassword' onChange={e => handleChange(e)} className='bg-transparent p-4 border-[0.1rem] border-lake rounded-[0.4rem] text-white w-full text-base focus:border-[0.1rem] focus:border-leaves focus:outline-none' />
+                <button type='submit' className='bg-lake text-white py-4 px-8 border-none font-bold cursor-pointer rounded-[0.4rem] text-base uppercase transition hover:bg-ocean'>Create user</button>
+                <span className='text-white'>Already have an account? <Link to="/login" className='text-ocean no-underline font-bold '>Login</Link></span>
             </form>
         </div>
     )
