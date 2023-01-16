@@ -1,13 +1,39 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { toast, ToastContainer, ToastOptions } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Logo from '../assets/Logo.png'
 
 function Register() {
+    const toastOptions: ToastOptions = {
+        position: "bottom-right",
+        autoClose: 8000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: 'dark'
+    }
+
+    const [values, setValues] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
+
     function handleSubmit(e: any) {
         e.preventDefault()
-        alert("form")
+        handleValidation()
     }
-    function handleChange(e: any) {
 
+    function handleValidation() {
+        const { password, confirmPassword, username, email } = values
+        if (password !== confirmPassword) {
+            toast.error("Password and confirmation password should be the same.", toastOptions)
+        }
+    }
+
+    function handleChange(e: any) {
+        setValues({ ...values, [e.target.name]: e.target.value })
     }
 
     return (
@@ -24,6 +50,7 @@ function Register() {
                 <button type='submit' className='bg-lake text-white py-4 px-8 border-none font-bold cursor-pointer rounded-[0.4rem] text-base uppercase transition hover:bg-ocean'>Create user</button>
                 <span className='text-white'>Already have an account? <Link to="/login" className='text-ocean no-underline font-bold '>Login</Link></span>
             </form>
+            <ToastContainer></ToastContainer>
         </div>
     )
 }
