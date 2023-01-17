@@ -17,6 +17,12 @@ function Register() {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        if (localStorage.getItem('chat-app-user')) {
+            navigate("/")
+        }
+    }, [])
+
     const [values, setValues] = useState({
         username: "",
         email: "",
