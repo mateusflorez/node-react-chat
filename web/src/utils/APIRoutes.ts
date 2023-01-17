@@ -1,3 +1,3 @@
-const host = "http://localhost:5173"
+const host = "http://localhost:3333"
 
 export const registerRoute = `${host}/api/auth/register`

@@ -9,3 +9,12 @@ datasource db {
   provider = "postgresql"
   url      = "postgres://admin:admin@localhost:5432/database"
 }
+
+model user {
+  id               String  @id @default(uuid())
+  username         String  @unique
+  email            String  @unique
+  password         String
+  isAvatarImageSet Boolean @default(false)
+  avatarImage      String  @default("")
+}
