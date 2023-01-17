@@ -11,7 +11,9 @@ module.exports = {
       colors: {
         lake: '#64E1FB',
         ocean: '#50B2F5',
-        leaves: '#8EEABB'
+        leaves: '#8EEABB',
+        night: '#131324',
+        ghost: '#00000076'
       }
     },
   },

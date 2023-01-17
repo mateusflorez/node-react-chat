@@ -8,5 +8,6 @@ const usersController = new UsersController()
 userRoutes.post("/register", usersController.register)
 userRoutes.post("/login", usersController.login)
 userRoutes.post("/setAvatar/:id", usersController.setAvatar)
+userRoutes.get("/allUsers/:id", usersController.getAllUsers)
 
 export { userRoutes }

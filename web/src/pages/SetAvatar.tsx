@@ -66,14 +66,14 @@ export default function SetAvatar() {
 
     if (isLoading) {
         return (
-            <div className='h-[100vh] w-[100vw] flex justify-center items-center flex-col gap-12 bg-[#131324]'>
+            <div className='h-[100vh] w-[100vw] flex justify-center items-center flex-col gap-12 bg-night'>
                 <img src={`${Loader}`} />
             </div>
         )
     }
     else {
         return (
-            <div className='h-[100vh] w-[100vw] flex justify-center items-center flex-col gap-12 bg-[#131324]'>
+            <div className='h-[100vh] w-[100vw] flex justify-center items-center flex-col gap-12 bg-night'>
                 <div>
                     <h1 className='text-white font-bold text-4xl'>Pick an avatar as your profile picture</h1>
                 </div>

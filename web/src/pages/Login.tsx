@@ -18,10 +18,10 @@ function Login() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (localStorage.getItem('chat-app-user')){
+        if (localStorage.getItem('chat-app-user')) {
             navigate("/")
         }
-    },[])
+    }, [])
 
     const [values, setValues] = useState({
         username: "",
@@ -63,8 +63,8 @@ function Login() {
     }
 
     return (
-        <div className='h-[100vh] w-[100vw] flex flex-col justify-center gap-4 items-center bg-[#131324]'>
-            <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-8 bg-[#00000076] rounded-[2rem] py-12 px-20'>
+        <div className='h-[100vh] w-[100vw] flex flex-col justify-center gap-4 items-center bg-night'>
+            <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-8 bg-ghost rounded-[2rem] py-12 px-20'>
                 <div className='flex items-center gap-4 justify-center'>
                     <img src={Logo} className='h-20' />
                     <h1 className='text-white uppercase font-bold text-4xl'>NRChat</h1>

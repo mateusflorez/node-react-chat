@@ -32,6 +32,11 @@ class UsersController {
                     username: user.username,
                     isAvatarImageSet: user.isAvatarImageSet,
                     avatarImage: user.avatarImage
+                    id: user.id,
+                    email: user.email,
+                    username: user.username,
+                    isAvatarImageSet: user.isAvatarImageSet,
+                    avatarImage: user.avatarImage
                 }
             })
         } catch (err) {
@@ -86,6 +91,28 @@ class UsersController {
                     avatarImage: user.avatarImage
                 }
             })
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    async getAllUsers(req: Request, res: Response, next: any) {
+        try {
+            const userId = req.params.id
+            const users = await prisma.user.findMany({
+                where: {
+                    id: {
+                        not: userId
+                    }
+                },
+                select: {
+                    email: true,
+                    username: true,
+                    avatarImage: true,
+                    id: true
+                }
+            })
+            return res.json(users)
         } catch (err) {
             next(err)
         }
