@@ -27,8 +27,11 @@ class UsersController {
             return res.json({
                 status: true,
                 user: {
-                    email: email,
-                    username: username
+                    id: user.id,
+                    email: user.email,
+                    username: user.username,
+                    isAvatarImageSet: user.isAvatarImageSet,
+                    avatarImage: user.avatarImage
                 }
             })
         } catch (err) {
@@ -48,8 +51,39 @@ class UsersController {
             return res.json({
                 status: true,
                 user: {
+                    id: user.id,
+                    email: user.email,
                     username: user.username,
-                    email: user.email
+                    isAvatarImageSet: user.isAvatarImageSet,
+                    avatarImage: user.avatarImage
+                }
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    async setAvatar(req: Request, res: Response, next: any) {
+        try {
+            const userId = req.params.id
+            const avatarImage = req.body.image
+            const user = await prisma.user.update({
+                where: {
+                    id: userId
+                },
+                data: {
+                    isAvatarImageSet: true,
+                    avatarImage
+                }
+            })
+            return res.json({
+                status: true,
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    username: user.username,
+                    isAvatarImageSet: user.isAvatarImageSet,
+                    avatarImage: user.avatarImage
                 }
             })
         } catch (err) {

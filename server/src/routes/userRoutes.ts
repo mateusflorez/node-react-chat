@@ -7,5 +7,6 @@ const usersController = new UsersController()
 
 userRoutes.post("/register", usersController.register)
 userRoutes.post("/login", usersController.login)
+userRoutes.post("/setAvatar/:id", usersController.setAvatar)
 
 export { userRoutes }

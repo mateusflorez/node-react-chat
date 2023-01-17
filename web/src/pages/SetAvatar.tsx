@@ -30,20 +30,16 @@ export default function SetAvatar() {
         } else {
             const userString = localStorage.getItem("chat-app-user");
             const user = userString ? JSON.parse(userString) : null;
-            if (user === null) {
-                navigate("/login")
+            const request = await axios.post(`${setAvatarRoute}/${user.id}`, {
+                image: avatars[selectedAvatar]
+            })
+            if (request.data.status) {
+                user.isAvatarImageSet = true
+                user.avatarImage = request.data.image
+                localStorage.setItem("chat-app-user", JSON.stringify(user))
+                navigate("/")
             } else {
-                const { data } = await axios.post(`${setAvatarRoute}/${user.id}`, {
-                    image: avatars[selectedAvatar]
-                })
-                if (data.isSet) {
-                    user.isAvatarImageSet = true
-                    user.avatarImage = data.image
-                    localStorage.setItem("chat-app-user", JSON.stringify(user))
-                    navigate("/")
-                } else {
-                    toast.error("Error setting avatar. Please try again", toastOptions)
-                }
+                toast.error("Error setting avatar. Please try again", toastOptions)
             }
         }
     }
@@ -62,8 +58,11 @@ export default function SetAvatar() {
         fetchData()
     }, [])
 
-
-
+    useEffect(() => {
+        if (!localStorage.getItem('chat-app-user')) {
+            navigate("/login")
+        }
+    }, [])
 
     if (isLoading) {
         return (
