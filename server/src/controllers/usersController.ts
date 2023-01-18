@@ -32,11 +32,6 @@ class UsersController {
                     username: user.username,
                     isAvatarImageSet: user.isAvatarImageSet,
                     avatarImage: user.avatarImage
-                    id: user.id,
-                    email: user.email,
-                    username: user.username,
-                    isAvatarImageSet: user.isAvatarImageSet,
-                    avatarImage: user.avatarImage
                 }
             })
         } catch (err) {
