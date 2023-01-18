@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Logo from '../assets/Logo.png'
+import Logout from "./Logout"
 
 export default function Contacts({ contacts, currentUser, changeChat }: { contacts: any[], currentUser: any, changeChat: any }) {
     const [currentUsername, setCurrentUsername] = useState([undefined])
@@ -44,13 +45,16 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
                         })
                     }
                 </div>
-                <div className="bg-ghost flex justify-center items-center p-2 gap-1 sm:gap-4">
-                    <div>
-                        <img className='h-16' src={`data:image/svg+xml;base64,${currentUserImage}`} />
+                <div className="flex justify-between items-center px-4 bg-ghost">
+                    <div className="flex justify-center items-center p-2 gap-1 sm:gap-4">
+                        <div>
+                            <img className='h-16' src={`data:image/svg+xml;base64,${currentUserImage}`} />
+                        </div>
+                        <div>
+                            <h2 className="text-white font-bold text-[0.8rem] md:text-base">{currentUsername}</h2>
+                        </div>
                     </div>
-                    <div>
-                        <h2 className="text-white font-bold text-[0.8rem] sm:text-base">{currentUsername}</h2>
-                    </div>
+                    <Logout />
                 </div>
             </div>
         )
