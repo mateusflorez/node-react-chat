@@ -20,7 +20,7 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
 
     if (Array.isArray(contacts)) {
         return (
-            <div className="grid grid-rows-[10%_75%_15%] overflow-hidden bg-[#080420]">
+            <div className="grid grid-rows-[10%_75%_15%] overflow-hidden bg-ocean">
                 <div className="flex items-center justify-center gap-4">
                     <img src={Logo} className="h-8" />
                     <h3 className="text-white uppercase font-bold">NRChat</h3>
@@ -30,7 +30,7 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
                         contacts.map((contact: any, index: any) => {
                             return (
                                 <div className={`
-                                ${index === currentSelected ? "bg-lake" : "bg-[#ffffff39]"}
+                                ${index === currentSelected ? "bg-lake" : "bg-ghost"}
                                  min-h-[5rem] w-[90%] cursor-pointer rounded-[0.4rem] p-2 gap-1 sm:gap-4 items-center flex transition ease-in-out
                                 `} key={index} onClick={() => changeCurrentChat(index, contact)}>
                                     <div>
