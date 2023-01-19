@@ -45,8 +45,8 @@ function Chat() {
     }, [currentUser])
 
     return (
-        <div className="h-[100vh] w-[100vw] flex flex-col justify-center gap-4 items-center bg-night">
-            <div className="h-[85vh] w-[85vw] bg-ghost grid grid-cols-[50%_50%] sm:grid-cols-[35%_65%] rounded-[0.4rem] overflow-hidden">
+        <div className="h-screen w-screen flex flex-col justify-center gap-4 items-center bg-night">
+            <div className="h-[80%] w-[80%] bg-ghost grid grid-cols-[50%_50%] sm:grid-cols-[35%_65%] rounded-[0.4rem] overflow-hidden">
                 <Contacts contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} />
                 {
                     currentChat === undefined ? (

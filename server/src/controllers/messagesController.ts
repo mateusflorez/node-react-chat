@@ -25,7 +25,9 @@ class MessagesController {
     }
     async getAllMessages(req: Request, res: Response, next: any) {
         try {
-            const { from, to } = req.body
+
+            const from: any = req.query.from
+            const to: any = req.query.to
             const messages = await prisma.message.findMany({
                 where: {
                     OR: [
@@ -44,7 +46,7 @@ class MessagesController {
                     ]
                 },
                 orderBy: {
-                    createdAt: 'desc'
+                    createdAt: 'asc'
                 }
             })
             return res.json(messages)

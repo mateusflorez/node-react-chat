@@ -12,7 +12,7 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
 
     if (Array.isArray(contacts)) {
         return (
-            <div className="grid grid-rows-[10%_75%_15%] overflow-hidden bg-ocean">
+            <div className="w-full grid grid-rows-[10%_78%_12%] overflow-hidden bg-ocean">
                 <div className="flex items-center justify-center gap-4">
                     <img src={Logo} className="h-8" />
                     <h3 className="text-white uppercase font-bold">NRChat</h3>
@@ -39,7 +39,7 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
                 <div className="flex justify-between items-center px-4 bg-ghost">
                     <div className="flex justify-center items-center p-2 gap-1 sm:gap-4">
                         <div>
-                            <img className='h-16' src={`data:image/svg+xml;base64,${currentUser?.avatarImage}`} />
+                            <img className='h-12' src={`data:image/svg+xml;base64,${currentUser?.avatarImage}`} />
                         </div>
                         <div>
                             <h2 className="text-white font-bold text-[0.8rem] md:text-base">{currentUser?.username}</h2>
