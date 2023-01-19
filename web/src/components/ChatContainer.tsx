@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react"
 import ChatInput from "./ChatInput"
 import Messages from "./Messages"
+import axios from "axios"
+import { sendMessageRoute } from "../utils/APIRoutes"
 
-
-export default function ChatContainer({ currentChat }: { currentChat: any }) {
+export default function ChatContainer({ currentChat, currentUser }: { currentChat: any, currentUser: any }) {
   const [currentChatname, setCurrentChatname] = useState([undefined])
   const [currentChatImage, setCurrentChatImage] = useState([undefined])
 
   const handleSendMessage = async (message: string) => {
-    
+    await axios.post(sendMessageRoute, {
+      from: currentUser.id,
+      to: currentChat.id,
+      message: message
+    })
   }
 
   useEffect(() => {
