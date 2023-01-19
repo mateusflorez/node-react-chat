@@ -7,7 +7,7 @@ import Welcome from "../components/Welcome"
 import ChatContainer from "../components/ChatContainer"
 
 
-function Chat() {
+function Chat({ socket }: { socket: any }) {
     const navigate = useNavigate()
 
     const [contacts, setContacts] = useState([])
@@ -52,7 +52,7 @@ function Chat() {
                     currentChat === undefined ? (
                         <Welcome currentUser={currentUser} />
                     ) : (
-                        <ChatContainer currentChat={currentChat} currentUser={currentUser} />
+                        <ChatContainer socket={socket} currentChat={currentChat} currentUser={currentUser} />
                     )
                 }
             </div>

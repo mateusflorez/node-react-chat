@@ -4,10 +4,10 @@ import Messages from "./Messages"
 import axios from "axios"
 import { getMessagesRoute, sendMessageRoute } from "../utils/APIRoutes"
 
-export default function ChatContainer({ currentChat, currentUser }: { currentChat: any, currentUser: any }) {
+export default function ChatContainer({ socket, currentChat, currentUser }: { socket: any, currentChat: any, currentUser: any }) {
   const [currentChatname, setCurrentChatname] = useState([undefined])
   const [currentChatImage, setCurrentChatImage] = useState([undefined])
-  const [messages, setMessages] = useState<any>()
+  const [messages, setMessages] = useState<any>([])
 
   useEffect(() => {
     const getMessages = async () => {
@@ -24,7 +24,19 @@ export default function ChatContainer({ currentChat, currentUser }: { currentCha
       to: currentChat.id,
       message: message
     })
+    socket.emit("message", {
+      senderId: currentUser.id,
+      receiverId: currentChat.id,
+      message: message
+    })
   }
+
+  useEffect(() => {
+    socket.on("messageResponse", (params: any) => {
+      console.log(params)
+      setMessages([...messages, params])
+    })
+  }, [socket, messages])
 
   useEffect(() => {
     if (currentChat) {
@@ -49,19 +61,21 @@ export default function ChatContainer({ currentChat, currentUser }: { currentCha
         {
           messages && messages.map((message: any, index: any) => {
             return (
-              <div className={`
-                ${message.senderId === currentUser.id ? "justify-end" : "justify-start"}
-                flex items-center
-                `} key={index}>
+              (message.senderId === currentUser.id || message.senderId === currentChat.id) && (message.receiverId === currentUser.id || message.receiverId === currentChat.id) ? (
                 <div className={`
-                   ${message.senderId === currentUser.id ? "bg-night" : "bg-ghost"}
-                  max-w-[100%] sm:max-w-[50%] break-words p-4 text-[1.1rem] rounded-2xl text-[#d1d1d1]
-                  `}>
-                  <p>
-                    {message.message}
-                  </p>
+                  ${message.senderId === currentUser.id ? "justify-end" : "justify-start"}
+                  flex items-center
+                  `} key={index}>
+                  <div className={`
+                    ${message.senderId === currentUser.id ? "bg-night" : "bg-ghost"}
+                    max-w-[100%] sm:max-w-[50%] break-words p-4 text-[1.1rem] rounded-2xl text-[#d1d1d1]
+                    `}>
+                    <p>
+                      {message.message}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ) : ("")
             )
           })
         }
