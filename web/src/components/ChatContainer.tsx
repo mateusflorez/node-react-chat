@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
+import ChatInput from "./ChatInput"
+import Messages from "./Messages"
 
 
 export default function ChatContainer({ currentChat }: { currentChat: any }) {
   const [currentChatname, setCurrentChatname] = useState([undefined])
   const [currentChatImage, setCurrentChatImage] = useState([undefined])
+
+  const handleSendMessage = async () => { }
 
   useEffect(() => {
     if (currentChat) {
@@ -24,8 +28,8 @@ export default function ChatContainer({ currentChat }: { currentChat: any }) {
           </div>
         </div>
       </div>
-      <div></div>
-      <div></div>
+      <Messages />
+      <ChatInput handleSendMessage={handleSendMessage} />
     </div>
   )
 }

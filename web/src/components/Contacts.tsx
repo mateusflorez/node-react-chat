@@ -3,16 +3,7 @@ import Logo from '../assets/Logo.png'
 import Logout from "./Logout"
 
 export default function Contacts({ contacts, currentUser, changeChat }: { contacts: any[], currentUser: any, changeChat: any }) {
-    const [currentUsername, setCurrentUsername] = useState([undefined])
-    const [currentUserImage, setCurrentUserImage] = useState([undefined])
     const [currentSelected, setCurrentSelected] = useState([undefined])
-
-    useEffect(() => {
-        if (currentUser) {
-            setCurrentUserImage(currentUser.avatarImage)
-            setCurrentUsername(currentUser.username)
-        }
-    }, [currentUser])
 
     function changeCurrentChat(index: any, contact: any) {
         setCurrentSelected(index)
@@ -48,10 +39,10 @@ export default function Contacts({ contacts, currentUser, changeChat }: { contac
                 <div className="flex justify-between items-center px-4 bg-ghost">
                     <div className="flex justify-center items-center p-2 gap-1 sm:gap-4">
                         <div>
-                            <img className='h-16' src={`data:image/svg+xml;base64,${currentUserImage}`} />
+                            <img className='h-16' src={`data:image/svg+xml;base64,${currentUser?.avatarImage}`} />
                         </div>
                         <div>
-                            <h2 className="text-white font-bold text-[0.8rem] md:text-base">{currentUsername}</h2>
+                            <h2 className="text-white font-bold text-[0.8rem] md:text-base">{currentUser?.username}</h2>
                         </div>
                     </div>
                     <Logout />

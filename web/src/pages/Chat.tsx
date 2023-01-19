@@ -11,7 +11,7 @@ function Chat() {
     const navigate = useNavigate()
 
     const [contacts, setContacts] = useState([])
-    const [currentUser, setCurrentUser] = useState<any>(undefined)
+    const [currentUser, setCurrentUser] = useState<any>()
     const [currentChat, setCurrentChat] = useState<any>(undefined)
 
     const handleChatChange = (chat: any) => {
