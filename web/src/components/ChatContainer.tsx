@@ -7,7 +7,9 @@ export default function ChatContainer({ currentChat }: { currentChat: any }) {
   const [currentChatname, setCurrentChatname] = useState([undefined])
   const [currentChatImage, setCurrentChatImage] = useState([undefined])
 
-  const handleSendMessage = async () => { }
+  const handleSendMessage = async (message: string) => {
+    
+  }
 
   useEffect(() => {
     if (currentChat) {
