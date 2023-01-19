@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import ChatInput from "./ChatInput"
 import Messages from "./Messages"
 import axios from "axios"
@@ -8,6 +8,8 @@ export default function ChatContainer({ socket, currentChat, currentUser }: { so
   const [currentChatname, setCurrentChatname] = useState([undefined])
   const [currentChatImage, setCurrentChatImage] = useState([undefined])
   const [messages, setMessages] = useState<any>([])
+
+  const messageEndRef = useRef<any>(null)
 
   useEffect(() => {
     const getMessages = async () => {
@@ -33,9 +35,9 @@ export default function ChatContainer({ socket, currentChat, currentUser }: { so
 
   useEffect(() => {
     socket.on("messageResponse", (params: any) => {
-      console.log(params)
       setMessages([...messages, params])
     })
+    messageEndRef.current.scrollTop = messageEndRef.current.scrollHeight
   }, [socket, messages])
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export default function ChatContainer({ socket, currentChat, currentUser }: { so
           </div>
         </div>
       </div>
-      <div className="py-4 px-8 flex flex-col gap-4 overflow-auto scrollbar w-full">
+      <div ref={messageEndRef} className="py-4 px-8 flex flex-col gap-4 overflow-auto scrollbar w-full">
         {
           messages && messages.map((message: any, index: any) => {
             return (
